@@ -2,7 +2,7 @@
 #include "producttablemodel.h"
 #include "productdelegate.h"
 #include "flowlayout.h"
-#include "initdb.h"
+#include "include/initdb.h"
 #include "./ui_mainwindow.h"
 
 #include <QtSql>

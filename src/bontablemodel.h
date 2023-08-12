@@ -4,7 +4,7 @@
 #include <QtWidgets>
 #include <QAbstractTableModel>
 #include <QList>
-#include "productmodel.h"
+#include "include/productmodel.h"
 
 /*Bon AbstractTableModel*/
 class BonTableModel : public QAbstractTableModel

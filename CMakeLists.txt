@@ -14,29 +14,36 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Sql Core PrintSupport REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Sql Core PrintSupport REQUIRED)
 
+set(SOURCE_DIR
+    src
+)
 set(PROJECT_SOURCES
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    productdelegate.cpp
-    productdelegate.h
-    producttablemodel.cpp
-    producttablemodel.h
-    initdb.h
-    addproductbutton.cpp
-    addproductbutton.h
-    bontablemodel.cpp
-    bontablemodel.h
-    editdialog.cpp
-    editdialog.h
-    editdialog.ui
-    mainwindow.ui
-    editproductdialog.h editproductdialog.cpp
-    flowlayout.h flowlayout.cpp
-    producttabwidget.h producttabwidget.cpp
-    productmodel.h
+    ${SOURCE_DIR}/main.cpp
+    ${SOURCE_DIR}/mainwindow.cpp
+    ${SOURCE_DIR}/mainwindow.h
+    ${SOURCE_DIR}/productdelegate.cpp
+    ${SOURCE_DIR}/productdelegate.h
+    ${SOURCE_DIR}/producttablemodel.cpp
+    ${SOURCE_DIR}/producttablemodel.h
+    ${SOURCE_DIR}/addproductbutton.cpp
+    ${SOURCE_DIR}/addproductbutton.h
+    ${SOURCE_DIR}/bontablemodel.cpp
+    ${SOURCE_DIR}/bontablemodel.h
+    ${SOURCE_DIR}/editdialog.cpp
+    ${SOURCE_DIR}/editdialog.h
+    ${SOURCE_DIR}/editdialog.ui
+    ${SOURCE_DIR}/mainwindow.ui
+    ${SOURCE_DIR}/editproductdialog.h
+    ${SOURCE_DIR}/editproductdialog.cpp
+    ${SOURCE_DIR}/flowlayout.h
+    ${SOURCE_DIR}/flowlayout.cpp
+    ${SOURCE_DIR}/producttabwidget.h
+    ${SOURCE_DIR}/producttabwidget.cpp
+    include/productmodel.h
+    include/initdb.h
     #Info.plist
 )
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(sBon

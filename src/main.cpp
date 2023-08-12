@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "productmodel.h"
+#include "include/productmodel.h"
 
 #include <QApplication>
 #include <QLocale>

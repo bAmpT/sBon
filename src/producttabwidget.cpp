@@ -84,21 +84,6 @@ void ProductTabWidget::loadSettings()
 
             addNewTab(title, numButtons);
 
-//            for (int j=0; j<numButtons; j++) {
-//                QWidget* buttonArea = this->widget(i)->findChild<QWidget*>(QString("buttonArea_%1").arg(QString::number(total)));
-//                if (buttonArea != nullptr) {
-//                    Product *p = new Product();
-//                    p->title = buttonProducts.at(j).title;
-//                    p->price = buttonProducts.at(j).price;
-
-//                    AddProductButton* button = buttonArea->findChild<AddProductButton*>();
-//                    if (button != nullptr)
-//                        button->setProduct(p);
-//                }
-//                total += 1;
-//            }
-//            QList<QWidget*> buttonAreas = this->widget(i)->findChildren<QWidget*>(QRegularExpression("buttonArea_\\d+"));
-
             QList<QWidget*> buttonAreas = buttonAreasList[i];
             for (int j=0; j<buttonAreas.count(); j++) {
                 Product *p = new Product(buttonProducts.at(j));
@@ -127,19 +112,6 @@ void ProductTabWidget::saveSettings()
         QStringList buttonPrices;
         QList<Product> buttonProducts;
 
-//        int numButtonArea = this->widget(i)->findChildren<QWidget*>(QRegularExpression("buttonArea_\\d+")).size();
-//        for (int j=0; j<numButtonArea; j++) {
-//            QWidget *buttonArea = this->widget(i)->findChild<QWidget*>(QString("buttonArea_%1").arg(total));
-//            if (buttonArea != nullptr) {
-//                AddProductButton* button = buttonArea->findChild<AddProductButton*>();
-//                if (button != nullptr)
-//                    buttonProducts.append(button->getProduct());
-//                else
-//                    qDebug() << "Error: button not found!";
-//            }
-//            total += 1;
-//        }
-
         QList<QWidget*> buttonAreas = buttonAreasList[i];//this->widget(i)->findChildren<QWidget*>(QRegularExpression("buttonArea_\\d+_"));
         foreach(QWidget* buttonArea, buttonAreas) {
             buttonProducts.append(buttonArea->findChild<AddProductButton*>()->getProduct());
@@ -157,57 +129,6 @@ QMainWindow* ProductTabWidget::getMainWindow()
             return mainWindow;
     return NULL;
 }
-/*
-void ProductTabWidget::addButton(const int tabIndex, Product product)
-{
-    // Find MainWindow handle
-    QMainWindow *mainWindow = getMainWindow();
-
-    QWidget *tabWidget = this->widget(tabIndex);
-    FlowLayout *flowLayout = tabWidget->findChild<FlowLayout*>();
-
-    int i = totalButtonCount;
-    QWidget* buttonArea = new QWidget();
-    buttonArea->setObjectName(QString("buttonArea_%1").arg(i));
-    buttonArea->setFixedSize(QSize(271,81));
-
-    AddProductButton *pushButton = new AddProductButton(buttonArea);
-    pushButton->setObjectName(QString("addProductButton_%1").arg(i));
-    pushButton->setGeometry(60,0,211,71);
-    pushButton->setText("<Leer>");
-    pushButton->setLabelText(product.title);
-    pushButton->setAcceptDrops(true);
-
-    // Connect to MainWindow
-    QObject::connect(pushButton, SIGNAL(clicked()), mainWindow, SLOT(addProduct()));
-    QObject::connect(pushButton, SIGNAL(updatedProductButton(int, Product*)), mainWindow, SLOT(updateProductButton(int, Product*)));
-
-    QLabel *label = new QLabel(buttonArea);
-    label->setObjectName(QString("priceLabel_%1").arg(i));
-    label->setGeometry(0,0,51,25);
-    label->setAlignment(Qt::AlignHCenter);
-    label->setText(product.getPriceFormatted());
-
-    QSpinBox *spinBox = new QSpinBox(buttonArea);
-    spinBox->setObjectName(QString("amountSpinBox_%1").arg(i));
-    spinBox->setGeometry(0,25,51,24);
-    spinBox->setAlignment(Qt::AlignHCenter);
-    spinBox->setMinimum(1);
-
-    QSlider *slider = new QSlider(buttonArea);
-    slider->setObjectName(QString("taxSlider_%1").arg(i));
-    slider->setGeometry(0,50,51,25);
-    slider->setOrientation(Qt::Horizontal);
-    slider->setTickPosition(QSlider::TicksAbove);
-    slider->setPageStep(1);
-    slider->setMinimum(0);
-    slider->setMaximum(2);
-
-    flowLayout->addWidget(buttonArea);
-    buttonAreas.append(buttonArea);
-    totalButtonCount += 1;
-}
-*/
 
 void ProductTabWidget::addNewTab(const QString& name, int numButtons)
 {
